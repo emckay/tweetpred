@@ -1,0 +1,5 @@
+.rv-xy-plot__series--label-text {
+  text-anchor: middle;
+  alignment-baseline: text-after-edge;
+  font-size: 0.72em;
+}

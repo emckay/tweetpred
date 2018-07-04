@@ -1,0 +1,47 @@
+.account {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 2px;
+  margin: 15px 0;
+  position: relative;
+  padding: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.account > * {
+  margin-bottom: 10px;
+}
+.account > *:last-child {
+  margin-bottom: 0;
+}
+
+.account:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.account .top-row, .account .bottom-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.account .params {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.account .options {
+  flex-grow: 1;
+}
+
+.account .options .form-group {
+  margin-bottom: 0;
+}
+
+.account .params .param-label {
+  width: 50px;
+  display: inline-block;
+}

@@ -104,3 +104,8 @@ venv.bak/
 .mypy_cache/
 
 .vscode
+static/
+
+# Zappa build artifacts
+tweetpred-djang-dev-*.tar.gz
+handler_tweetpred-djang-dev-*.zip

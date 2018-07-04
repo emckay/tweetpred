@@ -5,7 +5,7 @@ from .models import Account, DataFile, Estimate, Prediction
 class AccountSerializer(serializers.ModelSerializer):
   class Meta:
     model = Account
-    fields = ('pk', 'screen_name', 'dow')
+    fields = ('pk', 'screen_name', 'dow', 'bins', 'market_url')
 
 class DataFileSerializer(serializers.ModelSerializer):
   class Meta:

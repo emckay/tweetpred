@@ -25,18 +25,29 @@ TWITTER_CONSUMER_KEY = env('TWITTER_CONSUMER_KEY')
 TWITTER_ACCESS_TOKEN_KEY = env('TWITTER_ACCESS_TOKEN_KEY')
 TWITTER_CONSUMER_SECRET = env('TWITTER_CONSUMER_SECRET')
 TWITTER_ACCESS_TOKEN_SECRET = env('TWITTER_ACCESS_TOKEN_SECRET')
-AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+AWS_ACCESS_KEY_ID = env('DATA_FILE_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('DATA_FILE_AWS_SECRET_ACCESS_KEY')
 S3_DATA_FILE_BUCKET = env('S3_DATA_FILE_BUCKET')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [env('HOST_URL')]
 
+AWS_STORAGE_BUCKET_NAME = env('S3_STATIC_ASSET_BUCKET')
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+STATIC_URL = 'https://%s/' % AWS_S3_CUSTOM_DOMAIN
+STATIC_ROOT = '%s/static/' % BASE_DIR
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+CORS_ORIGIN_ALLOW_ALL = True
+print('CORS ORIGIN ALLOW ALL', CORS_ORIGIN_ALLOW_ALL)
+CORS_ALLOW_CREDENTIALS = False
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'rest_framework',
     'django_extensions',
+    'storages',
     'twitter_models.apps.TwitterModelsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,6 +58,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,13 +91,14 @@ WSGI_APPLICATION = 'tweetpred_django.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('DATABASE_NAME'),
         'USER': env('DATABASE_USER'),
         'PASSWORD': env('DATABASE_PASSWORD'),
+        'HOST': env('DATABASE_HOST'),
+        'PORT': env('DATABASE_PORT')
     }
 }
 

@@ -9,17 +9,20 @@ django-rest-framework = "*"
 django-environ = "*"
 "psycopg2" = "*"
 django-extensions = "*"
-pandas = "*"
 python-twitter = "*"
 scipy = "*"
 numpy = "*"
 "boto3" = "*"
 numexpr = "*"
+zappa = "*"
+django-storages = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 pylint = "*"
 "autopep8" = "*"
 pylint-django = "*"
+boto = "*"
 
 [requires]
 python_version = "3.6"

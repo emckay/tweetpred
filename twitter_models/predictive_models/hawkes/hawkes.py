@@ -116,7 +116,7 @@ def estimate(data, start_time_s_utc, end_time_s_utc, initial_params=None):
 def predict(data, params, hyper_params, est_start_time_s_utc, pred_start_time_s_utc, end_time_s_utc, max_count=500):
   if pred_start_time_s_utc >= end_time_s_utc:
     raise 'Start time cannot be greater than end time'
-  if pred_start_time_s_utc < data['timestamp_s_utc'].iloc[-1]:
+  if pred_start_time_s_utc < data['timestamp_s_utc'][len(data['timestamp_s_utc']) - 1]:
     raise 'Start time cannot be less than the last timestamp'
   (timestamps, pred_start_time, end_time) = normalize_timestamps(
       np.array(data['timestamp_s_utc']), est_start_time_s_utc, end_time_s_utc)
